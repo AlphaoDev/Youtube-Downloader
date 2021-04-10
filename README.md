@@ -19,6 +19,14 @@ $ pip3 install youtube-dl
 
 
 
+⚠️ If you are using ffmpeg package (here it's the case in the postprocessing), install it :
+
+```bash
+$ apt-get install ffmpeg
+```
+
+
+
 Now, add files in your chosen directory (where main.py is), create songs directory :
 
 ```bash
@@ -29,15 +37,17 @@ In this folder will be found your different style directories of downloaded musi
 
 ➜ songs
 
-​	➜ old
+​			➜ old
 
 
 
-Add in links.txt file the link of your video with first the tag like this:
+Add in links.txt file the link of your video with first the tag like this :
 
 ```
 old https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```
+
+Don't use youtube lists or others, just the direct link to the video.
 
 
 

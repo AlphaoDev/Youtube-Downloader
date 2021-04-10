@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import youtube_dl
 from pathlib import Path
 import hashlib
+import time
 
 # List of tags corresponding to the directories in the songs folder
 tags = ["old"]
@@ -33,8 +34,6 @@ def download():
                                 print("File already here, md5sum : {}.".format(md5))
                                 break
                         else:
-                            # Write md5 if it isn't here
-                            md5_file.write(str(md5) + "\n")
                             # Options to download Youtube file
                             ydl_opts = {
                                 'outtmpl': 'songs/{}/%(title)s.%(ext)s'.format(tag),
@@ -54,9 +53,18 @@ def download():
                                     title = infos.get('title', None)
                                     ydl.download([link])
                                     print("File downloaded, title : {}.".format(title))
+                                    # Write md5 if it isn't here
+                                    md5_file.write(str(md5) + "\n")
                             except Exception:
                                 print("Link {} is not downloadable".format(link))
 
 if __name__ == "__main__":
+    # Set timer
+    timer_start = time.time()
     # Launch download function
     download()
+    # Get final timer
+    timer_end = time.time()
+    timer_result = round(timer_end  - timer_start,3)
+    # Print timer
+    print("\nThe process lasted : {} s.".format(timer_result))
